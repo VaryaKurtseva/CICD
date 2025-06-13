@@ -1,8 +1,10 @@
 name: CD 
  
-on: 
-  push: 
-    branches: [ master ] 
+on:
+  workflow_run:
+    workflows: ["CI Main PR"]  # Зависит от успешного CI
+    branches: [main]
+    types: [completed]
  
 jobs: 
   publish: 

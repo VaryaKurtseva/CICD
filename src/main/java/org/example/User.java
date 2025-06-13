@@ -4,26 +4,27 @@ public class User {
     private String email;
     private String phone;
     private String socialProvider;
-    private String name;
+    private String username;
+
     private String password;
 
     // Конструктор для регистрации по email
     public User(String username, String email, String password) {
-        this.name = username;
+        this.username = username;
         this.email = email;
         this.password = password;
     }
 
     // Конструктор для регистрации по телефону
     public User(String username, String phone, String password, boolean byPhone) {
-        this.name = username;
+        this.username = username;
         this.phone = phone;
         this.password = password;
     }
 
     // Конструктор для регистрации через соцсеть
     public User(String username, String socialProvider) {
-        this.name = username;
+        this.username = username;
         this.socialProvider = socialProvider;
     }
 
@@ -40,7 +41,7 @@ public class User {
     }
 
     public String getUsername() {
-        return name;
+        return username;
     }
 
     public String getPassword() {

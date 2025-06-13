@@ -23,7 +23,7 @@ public class UserServiceTest {
         assertEquals("matvey@gmail.com", user.getEmail());
         assertEquals("password123", user.getPassword());
         assertNull(user.getPhone());
-        assertNull(user.getSocialProvider());
+        assertNull(user.getSocial());
     }
 
     @Test
@@ -34,7 +34,7 @@ public class UserServiceTest {
         assertEquals("89262533595", user.getPhone());
         assertEquals("pass123", user.getPassword());
         assertNull(user.getEmail());
-        assertNull(user.getSocialProvider());
+        assertNull(user.getSocial());
     }
 
     @Test
@@ -42,7 +42,7 @@ public class UserServiceTest {
         User user = userService.registerBySocial("Alex", "vk");
         assertNotNull(user);
         assertEquals("Alex", user.getUsername());
-        assertEquals("vk", user.getSocialProvider());
+        assertEquals("vk", user.getSocial());
         assertNull(user.getEmail());
         assertNull(user.getPhone());
         assertNull(user.getPassword());

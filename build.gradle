@@ -1,39 +1,30 @@
-plugins { 
-    id 'java' 
-    id 'maven-publish' 
-} 
- 
-group = 'com.github.VaryaKurtseva' 
-version = '1.0.0' 
- 
-dependencies { 
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0' 
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0' 
-} 
-repositories { 
-    mavenCentral() 
-} 
-test { 
-    useJUnitPlatform() 
-} 
- 
-publishing { 
-    publications { 
-        mavenJava(MavenPublication) { 
-            from components.java 
-            artifactId = 'parking-system' 
-        } 
-    } 
-    repositories { 
-        maven { 
-            name = "GitHubPackages"
-            url = "https://github.com/VaryaKurtseva/CICD" 
-            credentials { 
-                username = System.getenv("GITHUB_ACTOR") 
-                password = System.getenv("GITHUB_TOKEN") 
- 
-            } 
-        } 
-    } 
+plugins {
+    id 'java'
+    id 'maven-publish'
 }
 
+group = 'com.github.VaryaKurtseva'
+version = '1.0.0'
+
+java {
+    toolchain { languageVersion = JavaLanguageVersion.of(17) }
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            artifactId = 'parking-system'
+        }
+    }
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = "https://maven.pkg.github.com/VaryaKurtseva/CICD"
+            credentials {
+                username = project.findProperty("githubUser") ?: System.getenv("GITHUB_ACTOR")
+                password = project.findProperty("githubToken") ?: System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
+}

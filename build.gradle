@@ -3,7 +3,7 @@ plugins {
     id 'maven-publish' 
 } 
  
-group = 'com.github.promaxx5' 
+group = 'com.github.VaryaKurtseva' 
 version = '1.0.0' 
  
 dependencies { 

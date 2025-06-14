@@ -3,8 +3,6 @@ name: Continuous Integration (CI)
 on:
   pull_request:
     branches: [main]   # Триггер для PR в main
-  push:
-    branches: [dev]    # Триггер для push в dev
 
 jobs:
   build-and-test:

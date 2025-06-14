@@ -19,11 +19,21 @@ test {
     useJUnitPlatform()
 }
 
+
+group = 'com.github.VaryaKurtseva'
+version = '1.0.2'
+
 publishing {
     publications {
         mavenJava(MavenPublication) {
             from components.java
+
+            groupId = 'com.github.VaryaKurtseva'
+            artifactId = 'CICD'
+            version = '1.0.2'
+
             artifactId = 'parking-system'
+
         }
     }
     repositories {

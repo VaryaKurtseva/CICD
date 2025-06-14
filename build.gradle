@@ -3,8 +3,6 @@ plugins {
     id 'maven-publish'
 }
 
-group = 'com.github.VaryaKurtseva'
-version = '1.0.0'
 
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
@@ -17,12 +15,19 @@ test {
     useJUnitPlatform()
 }
 
+group = 'com.github.VaryaKurtseva'
+version = '1.0.0'
+
 publishing {
     publications {
         mavenJava(MavenPublication) {
             from components.java
+            groupId = 'com.github.VaryaKurtseva'
+            artifactId = 'CICD'
+            version = '1.0.0'
         }
     }
+
     repositories {
         maven {
             name = "GitHubPackages"

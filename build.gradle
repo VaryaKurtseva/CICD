@@ -3,7 +3,7 @@ plugins {
     id 'maven-publish' 
 } 
  
-group = 'com.github.VaryaKurtseca' 
+group = 'com.github.VaryaKurtseva' 
 version = '1.0.0' 
  
 dependencies { 
@@ -27,7 +27,7 @@ publishing {
     repositories { 
         maven { 
             name = "GitHubPackages" 
-            url = uri("https://github.com/users/VaryaKurtseva/projects/1")
+            url = uri("https://maven.pkg.github.com/users/VaryaKurtseva/projects/1")
             credentials { 
                 username = System.getenv("GITHUB_ACTOR") 
                 password = System.getenv("GITHUB_TOKEN") 

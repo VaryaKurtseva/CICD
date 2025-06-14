@@ -1,0 +1,33 @@
+name: CD to GitHub Packages
+
+on:
+  workflow_run:
+    workflows: ["CI for Main on PR"]  # Зависит от успешного CI
+    branches: [main]
+    types:
+      - completed
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17 
+        uses: actions/setup-java@v3 
+        with: 
+          java-version: '17' 
+          distribution: 'temurin' 
+          cache: 'gradle' 
+
+
+      - name: Build JAR with Gradle
+        run: ./gradlew jar
+
+      - name: Publish to GitHub Packages
+        uses: actions/upload-artifact@v3
+        with:
+          name: application-jar
+          path: build/libs/*.jar

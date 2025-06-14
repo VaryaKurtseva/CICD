@@ -1,35 +1,23 @@
-plugins { 
-    id 'java' 
-    id 'maven-publish' 
-} 
- 
-group = 'com.github.VaryaKurtseva' 
-version = '1.0.0' 
- 
-dependencies { 
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0' 
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0' 
-} 
-repositories { 
-    mavenCentral() 
-} 
-test { 
-    useJUnitPlatform() 
-} 
- 
-publishing {
-  publications {
-    mavenJava(MavenPublication) {
-      from components.java
-    }
-  }
-  repositories {
-    maven {
-      url = "https://maven.pkg.github.com/VaryaKurtseva/CICDО"
-      credentials {
-        username = System.getenv("GITHUB_ACTOR")
-        password = System.getenv("GITHUB_TOKEN")
-      }
-    }
-  }
+plugins {
+    id 'java'
+    id 'checkstyle'
+    id 'com.github.johnrengelman.shadow' version '7.1.2' // Для fat-JAR
+}
+
+java {
+    toolchain { languageVersion = JavaLanguageVersion.of(17) }
+}
+
+repositories { mavenCentral() }
+
+dependencies {
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.2'
+}
+
+test { useJUnitPlatform() }
+
+checkstyle {
+    toolVersion = '10.12.1'
+    configFile = file("${rootDir}/config/checkstyle/google_checks.xml")
 }

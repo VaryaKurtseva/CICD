@@ -3,20 +3,25 @@ plugins {
     id 'maven-publish'
 }
 
-// Обязательные параметры ↓
 group = 'com.github.VaryaKurtseva'
 version = '1.0.0'
-// ↑
 
-java {
-    toolchain { languageVersion = JavaLanguageVersion.of(17) }
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+}
+repositories {
+    mavenCentral()
+}
+test {
+    useJUnitPlatform()
 }
 
 publishing {
     publications {
         mavenJava(MavenPublication) {
             from components.java
-            artifactId = 'parking-system' // Дополнительный идентификатор
+            artifactId = 'parking-system'
         }
     }
     repositories {

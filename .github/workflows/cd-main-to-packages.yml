@@ -1,11 +1,10 @@
 name: CD to GitHub Packages
 
 on:
-  workflow_run:
-    workflows: ["CI for Main on PR"]  # Зависит от успешного CI
-    branches: [main]
-    types:
-      - completed
+  push:
+    branches:
+      - main
+
 
 jobs:
   publish:

@@ -2,7 +2,8 @@ plugins {
     id 'java' 
     id 'maven-publish' 
 } 
- 
+group = 'com.github.VaryaKurtseva' // Обязательный параметр!
+version = '1.0.0' // Версия
 
  
 dependencies { 

@@ -21,9 +21,15 @@ publishing {
     publications {
         mavenJava(MavenPublication) {
             from components.java
-            artifactId = 'parking-system'
-            versionMapping.usage('java-api').fromResolutionOf('runtimeClasspath')
-            versionMapping.usage('java-runtime').fromResolutionResult()
+            // Правильная конфигурация:
+            versionMapping {
+                usage('java-api') {
+                    fromResolutionOf('runtimeClasspath')
+                }
+                usage('java-runtime') {
+                    fromResolutionResult()
+                }
+            }
         }
     }
     repositories {

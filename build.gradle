@@ -1,39 +1,29 @@
-plugins { 
-    id 'java' 
-    id 'maven-publish' 
-} 
-group = 'com.github.VaryaKurtseva' // Обязательный параметр!
-version = '1.0.0' // Версия
+plugins {
+    id 'java'
+    id 'maven-publish'
+}
 
- 
-dependencies { 
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0' 
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0' 
-} 
-repositories { 
-    mavenCentral() 
-} 
-test { 
-    useJUnitPlatform() 
-} 
- 
+// Обязательные параметры ↓
+group = 'com.github.VaryaKurtseva'
+version = '1.0.0'
+// ↑
+
+java {
+    toolchain { languageVersion = JavaLanguageVersion.of(17) }
+}
+
 publishing {
     publications {
         mavenJava(MavenPublication) {
             from components.java
-            artifactId = 'parking-system'
-            // Разрешение конфликтов версий
-            versionMapping {
-                usage('java-api') { fromResolutionOf('runtimeClasspath') }
-                usage('java-runtime') { fromResolutionResult() }
-            }
+            artifactId = 'parking-system' // Дополнительный идентификатор
         }
     }
     repositories {
         maven {
-            url = "https://maven.pkg.github.com/VaryaKurtseva/CICD" // Корректный URL
+            url = "https://maven.pkg.github.com/VaryaKurtseva/CICD"
             credentials {
-                username = System.getenv("GITHUB_ACTOR") 
+                username = System.getenv("GITHUB_ACTOR")
                 password = System.getenv("GITHUB_TOKEN")
             }
         }

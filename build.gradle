@@ -21,25 +21,16 @@ publishing {
     publications {
         mavenJava(MavenPublication) {
             from components.java
-            // Правильная конфигурация:
-            versionMapping {
-                usage('java-api') {
-                    fromResolutionOf('runtimeClasspath')
-                }
-                usage('java-runtime') {
-                    fromResolutionResult()
-                }
-            }
         }
     }
     repositories {
         maven {
-            url = "https://maven.pkg.github.com/VaryaKurtseva/CICD"
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/VaryaKurtseva/CICD")
             credentials {
-               username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
-               password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
+                username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
+                password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
             }
         }
     }
 }
-

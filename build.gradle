@@ -23,8 +23,8 @@ publishing {
         maven {
             url = "https://maven.pkg.github.com/VaryaKurtseva/CICD"
             credentials {
-                username = System.getenv("GITHUB_ACTOR")
-                password = System.getenv("GITHUB_TOKEN")
+               username = System.getenv("GITHUB_ACTOR") ?: "VaryaKurtseva"
+                password = System.getenv("GITHUB_TOKEN") ?: "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"
             }
         }
     }

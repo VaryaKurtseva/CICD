@@ -22,6 +22,8 @@ publishing {
         mavenJava(MavenPublication) {
             from components.java
             artifactId = 'parking-system'
+            versionMapping.usage('java-api').fromResolutionOf('runtimeClasspath')
+            versionMapping.usage('java-runtime').fromResolutionResult()
         }
     }
     repositories {

@@ -1,7 +1,7 @@
 name: CD Main
 on:
   workflow_run:
-    workflows: ["CIMain"]
+    workflows: ["CI Main"]
     branches: [main]
     types: [completed]
 

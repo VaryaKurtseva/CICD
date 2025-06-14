@@ -1,9 +1,9 @@
+package org.example;
 
-
-public class User{
+public class User {
     private String email;
     private String phone;
-    private String social;
+    private String socialProvider;
     private String name;
     private String password;
 
@@ -24,7 +24,7 @@ public class User{
     // Конструктор для регистрации через соцсеть
     public User(String username, String socialProvider) {
         this.name = username;
-        this.social = socialProvider;
+        this.socialProvider = socialProvider;
     }
 
     public String getEmail() {
@@ -35,8 +35,8 @@ public class User{
         return phone;
     }
 
-    public String getSocial() {
-        return social;
+    public String getSocialProvider() {
+        return socialProvider;
     }
 
     public String getUsername() {

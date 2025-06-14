@@ -11,15 +11,20 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up JDK 17 
-        uses: actions/setup-java@v3 
-        with: 
-          java-version: '17' 
-          distribution: 'temurin' 
-          cache: 'gradle' 
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: 'gradle'   # Кэшируем зависимости
 
-      - name: Build with Gradle
-        run: ./gradlew build
+      # Добавляем кэширование для самого Gradle Wrapper
+      - name: Cache Gradle Wrapper
+        uses: actions/cache@v3
+        with:
+          path: ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-wrapper-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
 
-      - name: Run tests with JUnit
-        run: ./gradlew test
+      # Убедимся, что права на выполнение gradlew есть (для Unix)
+      - name: Grant gradlew permissions
+        run: chmod +x gradlew

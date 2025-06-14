@@ -3,6 +3,9 @@ name: CD to GitHub Packages
 on:
   push:
     branches: [ main ] 
+permissions:
+  packages: write  # Ключевое право!
+  contents: read
 
 jobs:
   publish:

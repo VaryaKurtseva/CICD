@@ -3,8 +3,6 @@ plugins {
     id 'maven-publish'
 }
 
-group = 'com.github.VaryaKurtseva'
-version = '1.0.5'
 
 repositories {
     mavenCentral()
@@ -19,6 +17,11 @@ test {
     useJUnitPlatform()
 }
 
+
+
+
+group = 'com.github.VaryaKurtseva'
+version = '1.0.5'
 
 publishing {
     publications {

@@ -7,7 +7,6 @@ public class User {
     private String name;
     private String password;
 
-    //Конструктор
     public User(String username, String email, String password) {
         this.name = username;
         this.email = email;

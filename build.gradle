@@ -21,7 +21,7 @@ test {
 
 
 group = 'com.github.VaryaKurtseva'
-version = '1.0.7'
+version = '1.0.8'
 
 publishing {
     publications {
@@ -30,7 +30,7 @@ publishing {
 
             groupId = 'com.github.VaryaKurtseva'
             artifactId = 'CICD'
-            version = '1.0.7'
+            version = '1.0.8'
 
             artifactId = 'parking-system'
 
